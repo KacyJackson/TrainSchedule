@@ -1,0 +1,53 @@
+body{
+  background: black;
+}
+.jumbotron{
+  background-color:white;
+  color:black;
+  border:5px grey solid;
+font: 2em Arial,sans-serif;
+}
+.ride{
+  font-size:40px;
+  color:blue;
+}
+
+.panel-body{
+  border:5px grey solid;
+}
+.current ,.add{
+  background-color:peachpuff;
+  color:white;
+  font-size:20px;
+}
+#trainTable{
+  background-color:#efffff;
+  color:white;
+  font-size:20px;
+  font: bold;
+}
+#enterTrainName,#enterTrainDestination,#departureTime,#trainFrequency{
+  color:black;
+  font-size:18px;
+  margin-left: 10px
+  background-color:#efffff;
+}
+.form-group{
+  color: black;
+  font-size:20px;
+}
+.btn{
+  background-color:green;
+  font-size:20px;
+}
+
+
+
+
+
+
+
+
+
+
+
