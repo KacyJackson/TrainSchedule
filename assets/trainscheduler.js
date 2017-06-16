@@ -14,8 +14,10 @@
 
 // Create Firebase variable and on-click function once the submit button is selected
 
-  var databaseURL = firebase.database();
+  var database = firebase.database();
     $("#addTrainButton").on("click", function() {
+
+      event.preventDefault()
 
 // grab the user input from the add train form and store in a variable
   var trainName = $("#enterTrainName").val().trim();
@@ -52,11 +54,8 @@
   $("#departureTime").val("");
   $("#trainFrequency").val("");
 
-return false;
+//return false;
 
-//close the on-click function  
-
-});
 
 // Tell firebase when to add new trains to the database
 
@@ -80,13 +79,24 @@ database.ref().on("child_added", function (childSnapshot) {
   console.log("Time Now:" + timeNow);
 
 // calculate time left to wait  
-  var waitTime = timeNow % frequency;  
-  var minutesLeft = frequency - waitTime;
+  var timeDifference = moment().diff(moment(firstDepartureTime), "minutes");
+
+  var waitTime = timeDifference % trainFrequencyInMinutes;  
+  console.log(waitTime);
+  
+  var minutesLeft = trainFrequencyInMinutes - waitTime;
+  console.log(minutesLeft);
 
 // Add the train details to the train schedule chart
 
   var theTrainComing = moment().add(minutesLeft, "minutes").format("HH:mm");
-  $("#trainChart>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + theTrainComing + "</td><td>" + frequency + "</td><td>" + waitTime + "</td></tr>");
+  $("#trainChart>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + theTrainComing + "</td><td>" + trainFrequencyInMinutes + "</td><td>" + waitTime + "</td></tr>");
+
+//close the on-click function  
+
+
+
+});
 
 });
 
